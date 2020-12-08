@@ -58,16 +58,56 @@
 		2FE90E3F257F861000CC3679 /* taskapp */ = {
 			isa = PBXGroup;
 			children = (
+				2FE90E57257F90D400CC3679 /* Model */,
+				2FE90E58257F90DD00CC3679 /* View */,
+				2FE90E59257F90E200CC3679 /* Controller */,
+				2FE90E5B257F910900CC3679 /* Database */,
+				2FE90E5A257F90F900CC3679 /* Support */,
 				2FE90E40257F861000CC3679 /* AppDelegate.swift */,
 				2FE90E42257F861000CC3679 /* SceneDelegate.swift */,
-				2FE90E44257F861000CC3679 /* ViewController.swift */,
-				2FE90E46257F861000CC3679 /* Main.storyboard */,
 				2FE90E4C257F861300CC3679 /* Assets.xcassets */,
 				2FE90E4E257F861300CC3679 /* LaunchScreen.storyboard */,
 				2FE90E51257F861300CC3679 /* Info.plist */,
-				2FE90E49257F861000CC3679 /* taskapp.xcdatamodeld */,
 			);
 			path = taskapp;
+			sourceTree = "<group>";
+		};
+		2FE90E57257F90D400CC3679 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FE90E58257F90DD00CC3679 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FE90E46257F861000CC3679 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FE90E59257F90E200CC3679 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FE90E44257F861000CC3679 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FE90E5A257F90F900CC3679 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		2FE90E5B257F910900CC3679 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2FE90E49257F861000CC3679 /* taskapp.xcdatamodeld */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
