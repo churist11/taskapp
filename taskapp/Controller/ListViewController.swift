@@ -9,29 +9,94 @@
 import UIKit
 
 class ListViewController: UIViewController {
-	
+
+
+	// MARK: - IBOutlet
+
+
+	@IBOutlet weak var tableView: UITableView!
+
 
 	// MARK: - LifeCycle
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		// Conform to protocol
+		self.tableView.dataSource = self
+		self.tableView.delegate = self
     }
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 	}
-    
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+
+
+}// MARK: - Endline
+
+
+// MARK: - UITableViewDataSource
+
+
+extension ListViewController: UITableViewDataSource {
+
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+		// TODO: - Fetch number of cell data
+		return 0
+	}
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+		// Get cell reusable
+		let cell = tableView.dequeueReusableCell(withIdentifier: C.CELL_ID, for: indexPath)
+
+		// Return configured cell
+		return cell
+	}
+
+	// Execute when deletion is occured by user's editing
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+//		// Confirm editing style
+//		if editingStyle != .delete {
+//			return
+//		}
+
+		// TODO: - Dealing with database for deletion
+
+		// TODO: - Update UI after deletion
+	}
+
+
+}
+
+
+// MARK: - UITableViewDelegate
+
+
+extension ListViewController: UITableViewDelegate {
+
+	// Execute when user tapped the cell
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		// TODO: - Perfom navigation to editing screen
+	}
+
+	// Setting for the cell can be delete
+	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+
+		// Add delete function to each cell
+		return .delete
+	}
 
 }

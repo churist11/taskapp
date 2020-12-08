@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/// My Constants
 struct C {
 	internal static let CELL_ID: String = "Cell"
 }
