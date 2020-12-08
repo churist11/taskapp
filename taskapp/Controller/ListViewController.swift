@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
 
 
 	// MARK: - IBOutlet
@@ -44,7 +44,7 @@ class ListViewController: UIViewController {
 
 }// MARK: - Endline
 
-
+// MARK: - Protocol Method
 // MARK: - UITableViewDataSource
 
 
@@ -74,6 +74,8 @@ extension ListViewController: UITableViewDataSource {
 //		}
 
 		// TODO: - Dealing with database for deletion
+
+		// TODO: - Cancel local notificaion for the cell
 
 		// TODO: - Update UI after deletion
 	}
