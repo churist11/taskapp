@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		2FE90E41257F861000CC3679 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E40257F861000CC3679 /* AppDelegate.swift */; };
 		2FE90E43257F861000CC3679 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E42257F861000CC3679 /* SceneDelegate.swift */; };
-		2FE90E45257F861000CC3679 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E44257F861000CC3679 /* ViewController.swift */; };
 		2FE90E48257F861000CC3679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE90E46257F861000CC3679 /* Main.storyboard */; };
 		2FE90E4B257F861000CC3679 /* taskapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E49257F861000CC3679 /* taskapp.xcdatamodeld */; };
 		2FE90E4D257F861300CC3679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE90E4C257F861300CC3679 /* Assets.xcassets */; };
 		2FE90E50257F861300CC3679 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE90E4E257F861300CC3679 /* LaunchScreen.storyboard */; };
+		2FE90E5D257F998400CC3679 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E5C257F998400CC3679 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FE90E3D257F861000CC3679 /* taskapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE90E40257F861000CC3679 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE90E42257F861000CC3679 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2FE90E44257F861000CC3679 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FE90E47257F861000CC3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FE90E4A257F861000CC3679 /* taskapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = taskapp.xcdatamodel; sourceTree = "<group>"; };
 		2FE90E4C257F861300CC3679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FE90E4F257F861300CC3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FE90E51257F861300CC3679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE90E5C257F998400CC3679 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 		2FE90E59257F90E200CC3679 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2FE90E44257F861000CC3679 /* ViewController.swift */,
+				2FE90E5C257F998400CC3679 /* ListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,8 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE90E4B257F861000CC3679 /* taskapp.xcdatamodeld in Sources */,
-				2FE90E45257F861000CC3679 /* ViewController.swift in Sources */,
 				2FE90E41257F861000CC3679 /* AppDelegate.swift in Sources */,
+				2FE90E5D257F998400CC3679 /* ListViewController.swift in Sources */,
 				2FE90E43257F861000CC3679 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
