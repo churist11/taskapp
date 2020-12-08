@@ -10,7 +10,10 @@ import UIKit
 
 final class InputViewController: UIViewController {
 
-
+	@IBOutlet weak var titleTextField: UITextField!
+	@IBOutlet weak var contentsTextView: UITextView!
+	@IBOutlet weak var datePicker: UIDatePicker!
+	
 
 	// MARK: - LifeCycle
 

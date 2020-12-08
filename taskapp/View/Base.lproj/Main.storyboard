@@ -84,11 +84,67 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jON-MH-AEm">
+                                <rect key="frame" x="10" y="98" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-8U-VMj">
+                                <rect key="frame" x="10" y="173" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="enX-fY-kHI">
+                                <rect key="frame" x="10" y="129" width="394" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k2n-rF-sGn">
+                                <rect key="frame" x="10" y="204" width="394" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="oGa-CS-dh2"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="s3H-VY-34s">
+                                <rect key="frame" x="0.0" y="334" width="414" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="c1c-16-OEa"/>
+                                </constraints>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="enX-fY-kHI" firstAttribute="top" secondItem="jON-MH-AEm" secondAttribute="bottom" constant="10" id="0jG-O0-TJW"/>
+                            <constraint firstItem="k2n-rF-sGn" firstAttribute="top" secondItem="v1K-8U-VMj" secondAttribute="bottom" constant="10" id="4kH-3d-YfB"/>
+                            <constraint firstItem="enX-fY-kHI" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="7Ra-0U-Jqx"/>
+                            <constraint firstItem="jON-MH-AEm" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="CSr-Lo-MNG"/>
+                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="k2n-rF-sGn" secondAttribute="trailing" constant="10" id="Dj0-Ft-j5G"/>
+                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="jON-MH-AEm" secondAttribute="trailing" constant="10" id="EFS-lf-btR"/>
+                            <constraint firstItem="v1K-8U-VMj" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="EQc-Bg-yWL"/>
+                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="enX-fY-kHI" secondAttribute="trailing" constant="10" id="F3h-Em-xQQ"/>
+                            <constraint firstItem="s3H-VY-34s" firstAttribute="trailing" secondItem="HNV-Q8-bO5" secondAttribute="trailing" id="GrC-e6-6fM"/>
+                            <constraint firstItem="jON-MH-AEm" firstAttribute="top" secondItem="HNV-Q8-bO5" secondAttribute="top" constant="10" id="OiV-m6-Alv"/>
+                            <constraint firstItem="k2n-rF-sGn" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="WLO-b7-5ws"/>
+                            <constraint firstItem="s3H-VY-34s" firstAttribute="top" secondItem="k2n-rF-sGn" secondAttribute="bottom" constant="10" id="YDg-n4-yIk"/>
+                            <constraint firstItem="s3H-VY-34s" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" id="YWC-Ex-xIw"/>
+                            <constraint firstItem="v1K-8U-VMj" firstAttribute="top" secondItem="enX-fY-kHI" secondAttribute="bottom" constant="10" id="eks-H0-khU"/>
+                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="v1K-8U-VMj" secondAttribute="trailing" constant="10" id="uSQ-tw-Cbn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HNV-Q8-bO5"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Yn-mP-iOK"/>
+                    <connections>
+                        <outlet property="contentsTextView" destination="k2n-rF-sGn" id="BwF-OP-eZS"/>
+                        <outlet property="datePicker" destination="s3H-VY-34s" id="64F-us-is5"/>
+                        <outlet property="titleTextField" destination="enX-fY-kHI" id="0od-fB-df6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhb-hL-4eE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,6 +170,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nRv-KT-eYI"/>
+        <segue reference="KZJ-us-LRN"/>
     </inferredMetricsTieBreakers>
 </document>
