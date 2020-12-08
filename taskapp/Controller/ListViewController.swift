@@ -53,7 +53,7 @@ extension ListViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		// TODO: - Fetch number of cell data
-		return 0
+		return 1
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,6 +92,9 @@ extension ListViewController: UITableViewDelegate {
 	// Execute when user tapped the cell
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// TODO: - Perfom navigation to editing screen
+
+		// Navigate to editing screen
+		self.performSegue(withIdentifier: C.SEGUE_ID_FROM_CELL, sender: self)
 	}
 
 	// Setting for the cell can be delete
