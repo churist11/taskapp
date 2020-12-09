@@ -21,9 +21,12 @@ final class ListViewController: UIViewController {
 	// MARK: - Stored Property
 
 	// Get instance value from Realm
-	let realm = try! Realm()
+	private let realm = try! Realm()
 
-	
+	// List array that stores task in DB
+	private var taskArray: Results<Task> = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+
+
 	// MARK: - LifeCycle
 
 
