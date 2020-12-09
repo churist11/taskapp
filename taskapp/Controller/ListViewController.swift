@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class ListViewController: UIViewController {
 
@@ -17,6 +18,12 @@ final class ListViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 
 
+	// MARK: - Stored Property
+
+	// Get instance value from Realm
+	let realm = try! Realm()
+
+	
 	// MARK: - LifeCycle
 
 
