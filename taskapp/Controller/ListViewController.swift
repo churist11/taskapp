@@ -20,7 +20,7 @@ final class ListViewController: UIViewController {
 
 	// MARK: - Stored Property
 
-	// Get instance value from Realm
+	// Get instance of Realm
 	private let realm = try! Realm()
 
 	// List array that stores task in DB
@@ -40,6 +40,9 @@ final class ListViewController: UIViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+
+		// Reflect updated task datas into tableview
+		self.tableView.reloadData()
 	}
 
 
