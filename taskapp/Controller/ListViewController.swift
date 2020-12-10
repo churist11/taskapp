@@ -62,14 +62,26 @@ extension ListViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-		// TODO: - Fetch number of cell data
-		return 1
+		// Number of task in DB
+		return self.taskArray.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 		// Get cell reusable
 		let cell = tableView.dequeueReusableCell(withIdentifier: C.CELL_ID, for: indexPath)
+
+		// Set title into cell from Task object
+		cell.textLabel?.text = self.taskArray[indexPath.row].title
+
+		// Get converted Date into String
+		let date = self.taskArray[indexPath.row].date
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd HH:mm"
+		let dateString: String = formatter.string(from: date)
+
+		// Set Date(subtitle) into  cell from Task object
+		cell.detailTextLabel?.text = dateString
 
 		// Return configured cell
 		return cell
@@ -78,16 +90,24 @@ extension ListViewController: UITableViewDataSource {
 	// Execute when deletion is occured by user's editing
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-//		// Confirm editing style
-//		if editingStyle != .delete {
-//			return
-//		}
+		// Confirm editing style
+		if editingStyle != .delete {
+			return
+		}
 
-		// TODO: - Dealing with database for deletion
+		// Dealing with database for deletion
+		try! self.realm.write {
+
+			// Delete Correspond task object from DB
+			self.realm.delete(self.taskArray[indexPath.row])
+
+			// Animate deletion
+			tableView.deleteRows(at: [indexPath], with: .fade)
+		}
+
 
 		// TODO: - Cancel local notificaion for the cell
 
-		// TODO: - Update UI after deletion
 	}
 
 
