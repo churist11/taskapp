@@ -47,8 +47,46 @@ final class ListViewController: UIViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+		// Get reference to destination
+		let inputVC = segue.destination as! InputViewController
+
+        // Divide case by element that user tapped
+		if segue.identifier  == C.SEGUE_ID_FROM_CELL {
+			// <Tapped cell>
+
+			// Get reference to index path for selected cell
+			if let indexPath = self.tableView.indexPathForSelectedRow {
+
+				// Get a task object corresponding to selected cell
+				let task = self.taskArray[indexPath.row]
+
+				// Assign given task obj into destination's task property
+				inputVC.task = task
+			}
+		} else {
+			// <Tapped add button>
+
+			// Initialize new blank task object
+			let task = Task()
+
+			// Get all objects in realm
+			let allTask = self.realm.objects(Task.self)
+
+			// Create new id for blank task
+			guard allTask.count != 0 else {
+				return
+			}
+
+			let newID = allTask.max(ofProperty: "id")!
+			+ 1
+
+			// Assign new id into blank task
+			task.id = newID
+
+			// Assign task obj into destination's task property
+			inputVC.task = task
+		}
     }
 
 
