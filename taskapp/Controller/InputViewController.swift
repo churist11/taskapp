@@ -35,7 +35,11 @@ final class InputViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Reflect task properties into UI compornents
+		// Add tap gesture into view
+		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+		self.view.addGestureRecognizer(tapGesture)
+
+		// Reflect task's properties into UI compornents
 		self.titleTextField.text = self.task.title
 		self.contentsTextView.text = self.task.contents
 		self.datePicker.date = self.task.date
@@ -57,6 +61,10 @@ final class InputViewController: UIViewController {
 			self.realm.add(self.task, update: .modified)
 		}
 
+	}
+
+	@objc private func dismissKeyboard() -> Void {
+		self.view.endEditing(true)
 	}
 
 }// MARK: - Endline
