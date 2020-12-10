@@ -74,15 +74,15 @@ final class ListViewController: UIViewController {
 			let allTask = self.realm.objects(Task.self)
 
 			// Create new id for blank task
-			guard allTask.count != 0 else {
-				return
+			if allTask.count != 0 {
+
+
+				let newID = allTask.max(ofProperty: "id")!
+					+ 1
+
+				// Assign new id into blank task
+				task.id = newID
 			}
-
-			let newID = allTask.max(ofProperty: "id")!
-			+ 1
-
-			// Assign new id into blank task
-			task.id = newID
 
 			// Assign task obj into destination's task property
 			inputVC.task = task
