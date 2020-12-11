@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-//import UserNotifications
+import UserNotifications
 
 final class InputViewController: UIViewController {
 
@@ -62,10 +62,35 @@ final class InputViewController: UIViewController {
 			self.realm.add(self.task, update: .modified)
 		}
 
+		// TODO: - Resister custom notification into Realm
+
 	}
 
 	@objc private func dismissKeyboard() -> Void {
 		self.view.endEditing(true)
+	}
+
+	private func resistNotification(with task: Task) -> Void {
+
+		// Initialize blank notification content
+		let content = UNMutableNotificationContent()
+
+		// Configure title, body, sound
+		if self.task.title == "" {
+			content.title = "(No Title)"
+		} else {
+			content.title = self.task.title
+		}
+
+		if self.task.contents ==  "" {
+			content.body = "(No Content)"
+		} else {
+			content.body = self.task.contents
+		}
+
+		content.sound = UNNotificationSound.default
+
+		// TODO: - Create date trigger
 	}
 
 }// MARK: - Endline
