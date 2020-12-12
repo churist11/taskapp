@@ -62,7 +62,8 @@ final class InputViewController: UIViewController {
 			self.realm.add(self.task, update: .modified)
 		}
 
-		// TODO: - Resister custom notification into Realm
+		// Resister custom notification into Realm
+		self.resistNotification(with: self.task)
 
 	}
 
@@ -73,24 +74,50 @@ final class InputViewController: UIViewController {
 	private func resistNotification(with task: Task) -> Void {
 
 		// Initialize blank notification content
-		let content = UNMutableNotificationContent()
+		let unContent = UNMutableNotificationContent()
 
-		// Configure title, body, sound
+		// Configure content: title, body, sound
 		if self.task.title == "" {
-			content.title = "(No Title)"
+			unContent.title = "(No Title)"
 		} else {
-			content.title = self.task.title
+			unContent.title = self.task.title
 		}
 
 		if self.task.contents ==  "" {
-			content.body = "(No Content)"
+			unContent.body = "(No Content)"
 		} else {
-			content.body = self.task.contents
+			unContent.body = self.task.contents
 		}
 
-		content.sound = UNNotificationSound.default
+		unContent.sound = UNNotificationSound.default
 
-		// TODO: - Create date trigger
+		// <Create date trigger>
+		// 1.Choose components from date the task has
+		let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self.task.date)
+
+		// 2.Create trigger from components
+		let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+		// Create UN requrst from content, trigger, taskID
+		let request = UNNotificationRequest(identifier: String(self.task.id), content: unContent, trigger: dateTrigger)
+
+		// <Resist request into UNcenter>
+		// 1.Get current center
+		let unCenter = UNUserNotificationCenter.current()
+
+		// 2.Add the request and set handler that log error message.
+		unCenter.add(request) { (error) in
+			print(error ?? "Resister successed.")
+		}
+
+		// Log notification that not notified yet.
+		unCenter.getPendingNotificationRequests { (requests) in
+			for request in requests {
+				print("/--------")
+				print(request)
+				print("--------/")
+			}
+		}
 	}
 
 }// MARK: - Endline
