@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 final class ListViewController: UIViewController {
 
@@ -136,18 +137,34 @@ extension ListViewController: UITableViewDataSource {
 			return
 		}
 
-		// Dealing with database for deletion
+		// Get task tobe deleted
+		let task = self.taskArray[indexPath.row]
+
+		// <Cancel local notificaion for the cell>
+		// 1. Get reference to UN center
+		let center = UNUserNotificationCenter.current()
+
+		// 2. Remove notification that corresponds to task tobe deleted
+		center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
+
+		// <Dealing with database for deletion>
 		try! self.realm.write {
 
-			// Delete Correspond task object from DB
-			self.realm.delete(self.taskArray[indexPath.row])
+			// 1. Delete Corresponding task object from DB
+			self.realm.delete(task)
 
-			// Animate deletion
+			// 2. Animate deletion
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 
-
-		// TODO: - Cancel local notificaion for the cell
+		// Log remaining pending notifications
+		center.getPendingNotificationRequests { (requests) in
+			for request in requests {
+				print("/-----------")
+				print(request)
+				print("-----------/")
+			}
+		}
 
 	}
 
@@ -162,7 +179,6 @@ extension ListViewController: UITableViewDelegate {
 
 	// Execute when user tapped the cell
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		// TODO: - Perfom navigation to editing screen
 
 		// Navigate to editing screen
 		self.performSegue(withIdentifier: C.SEGUE_ID_FROM_CELL, sender: self)

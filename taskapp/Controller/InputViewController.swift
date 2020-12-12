@@ -99,7 +99,7 @@ final class InputViewController: UIViewController {
 		let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 
 		// Create UN requrst from content, trigger, taskID
-		let request = UNNotificationRequest(identifier: String(self.task.id), content: unContent, trigger: dateTrigger)
+		let request = UNNotificationRequest(identifier: String(task.id), content: unContent, trigger: dateTrigger)
 
 		// <Resist request into UNcenter>
 		// 1.Get current center
