@@ -17,6 +17,8 @@ final class InputViewController: UIViewController {
 
 	@IBOutlet weak var titleTextField: UITextField!
 	@IBOutlet weak var contentsTextView: UITextView!
+	@IBOutlet weak var categoryTextField: UITextField!
+
 	@IBOutlet weak var datePicker: UIDatePicker!
 
 
@@ -35,6 +37,10 @@ final class InputViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		// Assgin sekf to text field's delegate
+		self.titleTextField.delegate = self
+		self.categoryTextField.delegate = self
 
 		// Add tap gesture into view
 		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -121,3 +127,19 @@ final class InputViewController: UIViewController {
 	}
 
 }// MARK: - Endline
+
+
+// MARK: - UITextFieldDelegate Method
+
+
+extension InputViewController: UITextFieldDelegate {
+
+	// Allow return action
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+		// End editing
+		textField.endEditing(true)
+		return true
+	}
+
+}
