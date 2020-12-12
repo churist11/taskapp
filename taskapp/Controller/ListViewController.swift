@@ -208,22 +208,40 @@ extension ListViewController: UISearchBarDelegate {
 
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 
+		// Divide case the search bar contains text or not
 		if searchBar.text != "" {
 
-			// TODO: - Perform filtering to all task object
+			// <Perform filtering to all task object>
 
-			// Get reference to all Task object in Realm
+			// 1. Get reference to all Task object in Realm
 			let allTask = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
 
-			// Get result of filtering category with input text
+			// 2. Get result of filtering category with input text
 			let result = allTask.filter("category CONTAINS %@", searchBar.text!)
 
-			// Assign result into array
+			// 3. Assign result into array
 			self.taskArray = result
+
+		} else {
+
+			// RE-assign plane task objects
+			self.taskArray = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
 		}
 
 		// Dismiss keyboard and end editing
 		self.searchBar.endEditing(true)
+	}
+
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+		// Trigger reload when search text is empty
+		if searchText == "" {
+			// RE-assign plane task objects
+			self.taskArray = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+
+			// Refresh table view
+			self.tableView.reloadData()
+		}
 	}
 
 	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
