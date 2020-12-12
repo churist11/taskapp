@@ -21,6 +21,7 @@ final class ListViewController: UIViewController {
 
 	// MARK: - Stored Property
 
+
 	// Get instance of Realm
 	private let realm = try! Realm()
 
@@ -122,8 +123,11 @@ extension ListViewController: UITableViewDataSource {
 		formatter.dateFormat = "yyyy-MM-dd HH:mm"
 		let dateString: String = formatter.string(from: date)
 
-		// Set Date(subtitle) into  cell from Task object
-		cell.detailTextLabel?.text = dateString
+		// Get category string value from the task
+		let categoryString = self.taskArray[indexPath.row].category
+
+		// Set date & category into cell's datail label
+		cell.detailTextLabel?.text = "\(dateString)・\(categoryString)"
 
 		// Return configured cell
 		return cell
@@ -165,17 +169,17 @@ extension ListViewController: UITableViewDataSource {
 				print("-----------/")
 			}
 		}
-
 	}
 
 
-}
+}// Endline
 
 
 // MARK: - UITableViewDelegate
 
 
 extension ListViewController: UITableViewDelegate {
+
 
 	// Execute when user tapped the cell
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -190,5 +194,6 @@ extension ListViewController: UITableViewDelegate {
 		// Add delete function to each cell
 		return .delete
 	}
+
 
 }

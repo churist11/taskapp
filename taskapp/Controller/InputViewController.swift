@@ -12,6 +12,7 @@ import UserNotifications
 
 final class InputViewController: UIViewController {
 
+
 	// MARK: - IBOutlet
 
 
@@ -38,7 +39,7 @@ final class InputViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Assgin sekf to text field's delegate
+		// Assgin self to text field's delegate
 		self.titleTextField.delegate = self
 		self.categoryTextField.delegate = self
 
@@ -49,6 +50,7 @@ final class InputViewController: UIViewController {
 		// Reflect task's properties into UI compornents
 		self.titleTextField.text = self.task.title
 		self.contentsTextView.text = self.task.contents
+		self.categoryTextField.text = self.task.category
 		self.datePicker.date = self.task.date
 	}
 
@@ -62,6 +64,7 @@ final class InputViewController: UIViewController {
 			// Configure task object
 			self.task.title = self.titleTextField.text!
 			self.task.contents = self.contentsTextView.text
+			self.task.category = self.categoryTextField.text!
 			self.task.date = self.datePicker.date
 
 			// Save task in realm
@@ -73,9 +76,16 @@ final class InputViewController: UIViewController {
 
 	}
 
+
+	// MARK: - Obj-c Method
+
 	@objc private func dismissKeyboard() -> Void {
 		self.view.endEditing(true)
 	}
+
+
+	// MARK: - Instance Property
+
 
 	private func resistNotification(with task: Task) -> Void {
 
@@ -83,17 +93,9 @@ final class InputViewController: UIViewController {
 		let unContent = UNMutableNotificationContent()
 
 		// Configure content: title, body, sound
-		if self.task.title == "" {
-			unContent.title = "(No Title)"
-		} else {
-			unContent.title = self.task.title
-		}
-
-		if self.task.contents ==  "" {
-			unContent.body = "(No Content)"
-		} else {
-			unContent.body = self.task.contents
-		}
+		unContent.title = (self.task.title == "") ? "(No Title)" : self.task.title
+		unContent.body = (self.task.contents ==  "") ? "(No Content)" : self.task.contents
+		unContent.subtitle = (self.task.category == "") ? "(No category)" : "category: \(self.task.category)"
 
 		unContent.sound = UNNotificationSound.default
 
