@@ -16,6 +16,7 @@ final class ListViewController: UIViewController {
 	// MARK: - IBOutlet
 
 
+	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var tableView: UITableView!
 
 
@@ -36,6 +37,7 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
 
 		// Conform to protocol
+		self.searchBar.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
     }
@@ -195,5 +197,13 @@ extension ListViewController: UITableViewDelegate {
 		return .delete
 	}
 
+
+}
+
+
+// MARK: - UISearchBarDelegate Method
+
+
+extension ListViewController: UISearchBarDelegate {
 
 }
