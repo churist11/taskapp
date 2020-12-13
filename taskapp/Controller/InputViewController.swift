@@ -31,6 +31,8 @@ final class InputViewController: UIViewController {
 	// Guaranteed tobe assigned value
 	internal var task: Task!
 
+	internal var categoryArray: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "name", ascending: true)
+
 
 	// MARK: - LifeCycle
 
@@ -56,9 +58,19 @@ final class InputViewController: UIViewController {
 		self.datePicker.date = self.task.date
 	}
 
+	// When back from EditCategory screen
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+
+
+
+	}
+
+	// MARK: - IBAction
+
 	// Deal with database about input before back to list
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
+	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
 
 		// Update realm to add new / edited task
 		try! self.realm.write {
@@ -67,7 +79,7 @@ final class InputViewController: UIViewController {
 			self.task.title = self.titleTextField.text!
 			self.task.contents = self.contentsTextView.text
 			// FIXME: - Get text picker current presents
-//			self.task.category?.name = self.categoryTextField.text!
+			//			self.task.category?.name = self.categoryTextField.text!
 			self.task.date = self.datePicker.date
 
 			// Save task in realm
@@ -77,8 +89,9 @@ final class InputViewController: UIViewController {
 		// Resister custom notification into Realm
 		self.resistNotification(with: self.task)
 
+		// Back to List VC
+		self.navigationController?.popViewController(animated: true)
 	}
-
 
 	// MARK: - Navigation
 
@@ -95,12 +108,6 @@ final class InputViewController: UIViewController {
 			// Send the task editing now
 			editCategoryVC.task = self.task
 		}
-	}
-
-
-	@IBAction func unwind(_ segue: UIStoryboardSegue) {
-
-//		print("Back")
 	}
 
 

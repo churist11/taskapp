@@ -198,7 +198,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HNV-Q8-bO5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2Yn-mP-iOK"/>
+                    <navigationItem key="navigationItem" id="2Yn-mP-iOK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="g2T-iP-Qbe">
+                            <connections>
+                                <action selector="saveTapped:" destination="8ON-GH-cxR" id="GJZ-l0-Lus"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryNamePicker" destination="eto-YE-x6B" id="zJq-Vo-D6C"/>
                         <outlet property="contentsTextView" destination="k2n-rF-sGn" id="BwF-OP-eZS"/>
@@ -236,7 +242,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="O5B-UT-aii">
                             <connections>
                                 <action selector="saveTapped:" destination="tcM-7g-fbY" id="C6L-nq-pa6"/>
-                                <segue destination="HMe-x0-jmq" kind="unwind" unwindAction="unwind:" id="fVI-Nb-uPU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -245,7 +250,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trb-Kw-LLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="HMe-x0-jmq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3237.68115942029" y="101.78571428571428"/>
         </scene>

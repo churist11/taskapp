@@ -57,7 +57,11 @@ class EditCategoryViewController: UIViewController {
 
 			// Modify category property of the task
 			self.task.category?.name = self.nameTextField.text!
+
 		}
+
+		// Back to InputVC
+		self.navigationController?.popViewController(animated: true)
 	}
 
 
