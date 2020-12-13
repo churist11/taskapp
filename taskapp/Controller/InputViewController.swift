@@ -149,7 +149,7 @@ final class InputViewController: UIViewController {
 		unContent.title = (self.task.title == "") ? "(No Title)" : self.task.title
 		unContent.body = (self.task.contents ==  "") ? "(No Content)" : self.task.contents
 		// FIXME: - Set subtitle from category name
-		unContent.subtitle = (self.task.category?.name == "") ? "(No category)" : "category: \(String(describing: self.task.category?.name))"
+		unContent.subtitle = (self.task.category?.name == "") ? "(No category)" : "category: \(self.task.category!.name)"
 
 		unContent.sound = UNNotificationSound.default
 

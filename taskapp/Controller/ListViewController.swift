@@ -28,7 +28,9 @@ final class ListViewController: UIViewController {
 	private let realm = try! Realm()
 
 	// List array that stores task in DB
-	private var taskArray: Results<Task> = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+	private var taskList: Results<Task> = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+
+	private var categoryList: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
 
 
 	// MARK: - LifeCycle
@@ -41,6 +43,8 @@ final class ListViewController: UIViewController {
 		self.searchBar.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+		self.categoryNamePicker.dataSource = self
+		self.categoryNamePicker.delegate = self
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +71,7 @@ final class ListViewController: UIViewController {
 			if let indexPath = self.tableView.indexPathForSelectedRow {
 
 				// Get a task object corresponding to selected cell
-				let task = self.taskArray[indexPath.row]
+				let task = self.taskList[indexPath.row]
 
 				// Assign given task obj into destination's task property
 				inputVC.task = task
@@ -111,7 +115,7 @@ extension ListViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		// Number of task in DB
-		return self.taskArray.count
+		return self.taskList.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,16 +124,16 @@ extension ListViewController: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: C.CELL_ID, for: indexPath)
 
 		// Set title into cell from Task object
-		cell.textLabel?.text = self.taskArray[indexPath.row].title
+		cell.textLabel?.text = self.taskList[indexPath.row].title
 
 		// Get converted Date into String
-		let date = self.taskArray[indexPath.row].date
+		let date = self.taskList[indexPath.row].date
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd HH:mm"
 		let dateString: String = formatter.string(from: date)
 		// FIXME: - Get category's name
 		// Get category string value from the task
-		let categoryString = self.taskArray[indexPath.row].category?.name
+		let categoryString = self.taskList[indexPath.row].category?.name
 
 		// Set date & category into cell's datail label
 		cell.detailTextLabel?.text = "\(dateString)・\(categoryString!)"
@@ -147,7 +151,7 @@ extension ListViewController: UITableViewDataSource {
 		}
 
 		// Get task tobe deleted
-		let task = self.taskArray[indexPath.row]
+		let task = self.taskList[indexPath.row]
 
 		// <Cancel local notificaion for the cell>
 		// 1. Get reference to UN center
@@ -218,21 +222,24 @@ extension ListViewController: UISearchBarDelegate {
 
 			// 1. Get reference to all Task object in Realm
 			let allTask = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
-			// FIXME: - 
+
 			// 2. Get result of filtering category with input text
-			let result = allTask.filter("category CONTAINS %@", searchBar.text!)
+			let result = allTask.filter("category.name CONTAINS %@", searchBar.text!)
 
 			// 3. Assign result into array
-			self.taskArray = result
+			self.taskList = result
 
 		} else {
 
 			// RE-assign plane task objects
-			self.taskArray = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+			self.taskList = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
 		}
 
 		// Dismiss keyboard and end editing
 		self.searchBar.endEditing(true)
+
+		// Refresh table view after filering
+		self.tableView.reloadData()
 	}
 
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -240,17 +247,52 @@ extension ListViewController: UISearchBarDelegate {
 		// Trigger reload when search text is empty
 		if searchText == "" {
 			// RE-assign plane task objects
-			self.taskArray = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+			self.taskList = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
 
 			// Refresh table view
 			self.tableView.reloadData()
 		}
 	}
 
-	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+	
+}
 
-		// Refresh table view after filering
-		self.tableView.reloadData()
+
+// MARK: - UIPickerViewDataSource Method
+
+
+extension ListViewController: UIPickerViewDataSource {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+
+		return 1
+	}
+
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+		return self.categoryList.count
+	}
+}
+
+
+// MARK: - UIPickerViewDelegate Method
+
+
+extension ListViewController: UIPickerViewDelegate {
+
+
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+		return self.categoryList[row].name
+
+	}
+
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+		// Set row title into seach bar
+		self.searchBar.text = self.categoryList[row].name
+
+		// Perform searching
+		self.searchBarSearchButtonClicked(self.searchBar)
 	}
 
 }
