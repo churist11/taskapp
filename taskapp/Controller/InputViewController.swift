@@ -31,7 +31,7 @@ final class InputViewController: UIViewController {
 	// Guaranteed tobe assigned value
 	internal var task: Task!
 
-	internal var categoryArray: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "name", ascending: true)
+	internal var categoryArray: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
 
 
 	// MARK: - LifeCycle
@@ -53,8 +53,6 @@ final class InputViewController: UIViewController {
 		// Reflect task's properties into UI compornents
 		self.titleTextField.text = self.task.title
 		self.contentsTextView.text = self.task.contents
-		// FIXME: - Set category's name
-		//		self.categoryTextField.text = self.task.category?.name
 		self.datePicker.date = self.task.date
 	}
 
@@ -91,23 +89,6 @@ final class InputViewController: UIViewController {
 
 		// Back to List VC
 		self.navigationController?.popViewController(animated: true)
-	}
-
-	// MARK: - Navigation
-
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-		// Confirm segue id
-		guard segue.identifier == C.SEGUE_ID_ADD_CATEGORY else {
-			return
-		}
-
-		// Get reference to EditCategory VC
-		if let editCategoryVC = segue.destination as? EditCategoryViewController {
-
-			// Send the task editing now
-			editCategoryVC.task = self.task
-		}
 	}
 
 

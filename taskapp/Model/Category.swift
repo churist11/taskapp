@@ -17,8 +17,11 @@ class Category: Object{
 	// Name
 	@objc dynamic var name: String = ""
 
-	// Set name as primary key
+	// ID for management
+	@objc dynamic var id: Int = 0
+
+	// Set id as primary key
 	override class func primaryKey() -> String? {
-		return "name"
+		return "id"
 	}
 }

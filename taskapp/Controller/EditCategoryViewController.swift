@@ -25,10 +25,7 @@ class EditCategoryViewController: UIViewController {
 	// Get reference to realm DB
 	private var realm = try! Realm()
 
-	// Get reference to given task editing now
-	internal var task: Task!
 	
-
 	// MARK: - LifeCycle
 
 
@@ -59,19 +56,32 @@ class EditCategoryViewController: UIViewController {
 				return
 		}
 
-		// Create blank category
+		// <Confugure new category>
+		// 1. Create blank category
 		let newCategory = Category()
 
-		// Set name to new category
+		// 2. Set name to the category from text field
 		newCategory.name = self.nameTextField.text!
 
+		// 3. Get all objects in realm
+		let allCategory = self.realm.objects(Category.self)
+
+		// 4. Create new id for the category
+		if allCategory.count != 0 {
+
+
+			let newID = allCategory.max(ofProperty: "id")!
+				+ 1
+
+			// Set new id into the category
+			newCategory.id = newID
+		}
+
+		// Deal with DB
 		try! self.realm.write {
 
 			// Add new category into Realm
 			self.realm.add(newCategory)
-
-			// Modify category property of the task
-			self.task.category?.name = self.nameTextField.text!
 
 		}
 

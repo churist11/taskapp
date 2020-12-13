@@ -13,10 +13,7 @@ class Task: Object {
 
 	// Relationship to one Category
 	@objc dynamic var category: Category?
-
-	// ID for management
-	@objc dynamic var id: Int = 0
-
+	
 	// Title
 	@objc dynamic var title: String = ""
 
@@ -27,6 +24,9 @@ class Task: Object {
 	// Date
 	@objc dynamic var date: Date = Date()
 
+	// ID for management
+	@objc dynamic var id: Int = 0
+	
 	// Set id as primary key
 	override class func primaryKey() -> String? {
 		return "id"
