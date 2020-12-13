@@ -9,13 +9,13 @@
 import UIKit
 import RealmSwift
 
-class EditCategoryViewController: UIViewController {
+final class EditCategoryViewController: UIViewController {
 
 
 	// MARK: - IBOutlet
 
-	@IBOutlet weak var alertLabel: UILabel!
 
+	@IBOutlet weak var alertLabel: UILabel!
 	@IBOutlet weak var nameTextField: UITextField!
 
 
@@ -24,6 +24,9 @@ class EditCategoryViewController: UIViewController {
 
 	// Get reference to realm DB
 	private var realm = try! Realm()
+
+	// Task that editing now
+	internal var task: Task!
 
 	
 	// MARK: - LifeCycle
@@ -82,7 +85,6 @@ class EditCategoryViewController: UIViewController {
 
 			// Add new category into Realm
 			self.realm.add(newCategory)
-
 		}
 
 		// Back to InputVC

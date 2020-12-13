@@ -22,7 +22,7 @@ final class InputViewController: UIViewController {
 	@IBOutlet weak var datePicker: UIDatePicker!
 
 
-	// MARK: - Instance Property
+	// MARK: - Stored Property
 
 
 	// Get instance value from Realm
@@ -31,7 +31,7 @@ final class InputViewController: UIViewController {
 	// Guaranteed tobe assigned value
 	internal var task: Task!
 
-	internal var categoryArray: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
+	private var categoryList: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
 
 
 	// MARK: - LifeCycle
@@ -60,12 +60,23 @@ final class InputViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
+		// Execute when the task already have category
+		if let category = self.task.category {
 
+			// Reflect updated data in picker view
+			self.categoryNamePicker.reloadComponent(0)
 
+			// Get index of selected category
+			let index = category.id
 
+			// Auto select row corresponding to the task's category
+			self.categoryNamePicker.selectRow(index, inComponent: 0, animated: false)
+		}
 	}
 
+
 	// MARK: - IBAction
+	
 
 	// Deal with database about input before back to list
 	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
@@ -76,8 +87,15 @@ final class InputViewController: UIViewController {
 			// Configure task object
 			self.task.title = self.titleTextField.text!
 			self.task.contents = self.contentsTextView.text
-			// FIXME: - Get text picker current presents
-			//			self.task.category?.name = self.categoryTextField.text!
+			
+			// <Get text picker current presents>
+			// 1. Get index fo selected row in picker
+			let index = self.categoryNamePicker.selectedRow(inComponent: 0)
+
+			// 2. Set category obj from array
+			self.task.category = self.categoryList[index]
+
+			// Set date
 			self.task.date = self.datePicker.date
 
 			// Save task in realm
@@ -92,7 +110,27 @@ final class InputViewController: UIViewController {
 	}
 
 
+	// MARK: - Navigation
+	
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+		// Confirm segue id
+		guard segue.identifier == C.SEGUE_ID_ADD_CATEGORY else {
+			return
+		}
+
+		// Get reference to EditCategory VC
+		if let editCategoryVC = segue.destination as? EditCategoryViewController {
+
+			// Send the task editing now
+			editCategoryVC.task = self.task
+		}
+	}
+
+
 	// MARK: - Obj-c Method
+
 
 	@objc private func dismissKeyboard() -> Void {
 		self.view.endEditing(true)
@@ -111,7 +149,7 @@ final class InputViewController: UIViewController {
 		unContent.title = (self.task.title == "") ? "(No Title)" : self.task.title
 		unContent.body = (self.task.contents ==  "") ? "(No Content)" : self.task.contents
 		// FIXME: - Set subtitle from category name
-//		unContent.subtitle = (self.task.category?.name == "") ? "(No category)" : "category: \(String(describing: self.task.category?.name))"
+		unContent.subtitle = (self.task.category?.name == "") ? "(No category)" : "category: \(String(describing: self.task.category?.name))"
 
 		unContent.sound = UNNotificationSound.default
 
@@ -143,6 +181,7 @@ final class InputViewController: UIViewController {
 			}
 		}
 	}
+	
 
 }// MARK: - Endline
 
@@ -162,18 +201,33 @@ extension InputViewController: UITextFieldDelegate {
 
 }
 
+
+// MARK: - UIPickerViewDataSource Method
+
+
 extension InputViewController: UIPickerViewDataSource {
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+
 		return 1
 	}
 
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return 5
+
+		return self.categoryList.count
 	}
-
-
 }
+
+
+// MARK: - UIPickerViewDelegate Method
+
 
 extension InputViewController: UIPickerViewDelegate {
 
+
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+		return self.categoryList[row].name
+
+	}
+	
 }

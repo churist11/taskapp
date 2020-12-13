@@ -147,23 +147,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="s3H-VY-34s">
-                                <rect key="frame" x="10" y="480" width="414" height="120"/>
+                                <rect key="frame" x="10" y="505" width="414" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="ryD-KC-0ap"/>
                                 </constraints>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eto-YE-x6B">
-                                <rect key="frame" x="10" y="365" width="394" height="80"/>
+                                <rect key="frame" x="10" y="365" width="394" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="xkP-X4-Lqc"/>
+                                    <constraint firstAttribute="height" constant="100" id="xkP-X4-Lqc"/>
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSH-mU-gBI">
-                                <rect key="frame" x="246.5" y="450" width="157.5" height="20"/>
+                                <rect key="frame" x="10" y="470" width="394" height="25"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="iFa-kV-Tyn"/>
+                                    <constraint firstAttribute="height" constant="25" id="Jzd-SB-RA4"/>
                                 </constraints>
-                                <state key="normal" title="+ category"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="+ new category">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="tcM-7g-fbY" kind="show" identifier="addCategory" id="y04-jg-tKp"/>
                                 </connections>
@@ -177,24 +181,24 @@
                             <constraint firstItem="jON-MH-AEm" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="CSr-Lo-MNG"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="k2n-rF-sGn" secondAttribute="trailing" constant="10" id="Dj0-Ft-j5G"/>
                             <constraint firstItem="s3H-VY-34s" firstAttribute="trailing" secondItem="HNV-Q8-bO5" secondAttribute="trailing" constant="10" id="E1A-9O-Xky"/>
-                            <constraint firstItem="TSH-mU-gBI" firstAttribute="top" secondItem="eto-YE-x6B" secondAttribute="bottom" constant="5" id="E7g-aU-6qU"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="jON-MH-AEm" secondAttribute="trailing" constant="10" id="EFS-lf-btR"/>
                             <constraint firstItem="v1K-8U-VMj" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="EQc-Bg-yWL"/>
                             <constraint firstItem="tVL-dj-I6U" firstAttribute="top" secondItem="k2n-rF-sGn" secondAttribute="bottom" constant="10" id="ETW-XK-efq"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="enX-fY-kHI" secondAttribute="trailing" constant="10" id="F3h-Em-xQQ"/>
-                            <constraint firstItem="s3H-VY-34s" firstAttribute="top" secondItem="TSH-mU-gBI" secondAttribute="bottom" constant="10" id="I96-nD-4Q5"/>
-                            <constraint firstItem="TSH-mU-gBI" firstAttribute="width" secondItem="eto-YE-x6B" secondAttribute="width" multiplier="0.4" id="J6N-tj-Zu4"/>
+                            <constraint firstItem="TSH-mU-gBI" firstAttribute="top" secondItem="eto-YE-x6B" secondAttribute="bottom" constant="5" id="NTx-aZ-iVN"/>
                             <constraint firstItem="jON-MH-AEm" firstAttribute="top" secondItem="HNV-Q8-bO5" secondAttribute="top" constant="10" id="OiV-m6-Alv"/>
                             <constraint firstItem="eto-YE-x6B" firstAttribute="top" secondItem="tVL-dj-I6U" secondAttribute="bottom" constant="10" id="RiM-3p-YPp"/>
                             <constraint firstItem="tVL-dj-I6U" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="Rzs-Kz-IwZ"/>
-                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="TSH-mU-gBI" secondAttribute="trailing" constant="10" id="STe-Ap-w5f"/>
+                            <constraint firstItem="TSH-mU-gBI" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="UbL-HM-0ga"/>
                             <constraint firstItem="eto-YE-x6B" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="VcN-ZH-kso"/>
                             <constraint firstItem="k2n-rF-sGn" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="WLO-b7-5ws"/>
+                            <constraint firstItem="s3H-VY-34s" firstAttribute="top" secondItem="TSH-mU-gBI" secondAttribute="bottom" constant="10" id="e6B-W3-89z"/>
                             <constraint firstItem="v1K-8U-VMj" firstAttribute="top" secondItem="enX-fY-kHI" secondAttribute="bottom" constant="10" id="eks-H0-khU"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="tVL-dj-I6U" secondAttribute="trailing" constant="10" id="nu0-in-XdM"/>
                             <constraint firstItem="s3H-VY-34s" firstAttribute="leading" secondItem="HNV-Q8-bO5" secondAttribute="leading" constant="10" id="p9A-Vd-brf"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="eto-YE-x6B" secondAttribute="trailing" constant="10" id="qaD-d6-rJf"/>
                             <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="v1K-8U-VMj" secondAttribute="trailing" constant="10" id="uSQ-tw-Cbn"/>
+                            <constraint firstItem="HNV-Q8-bO5" firstAttribute="trailing" secondItem="TSH-mU-gBI" secondAttribute="trailing" constant="10" id="w9e-DZ-VVP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HNV-Q8-bO5"/>
                     </view>
@@ -247,7 +251,7 @@
                         <viewLayoutGuide key="safeArea" id="EaU-1H-YvG"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZxI-9c-umb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="O5B-UT-aii">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="O5B-UT-aii">
                             <connections>
                                 <action selector="saveTapped:" destination="tcM-7g-fbY" id="C6L-nq-pa6"/>
                             </connections>

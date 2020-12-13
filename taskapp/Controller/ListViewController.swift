@@ -101,6 +101,7 @@ final class ListViewController: UIViewController {
 
 }// MARK: - Endline
 
+
 // MARK: - Protocol Method
 // MARK: - UITableViewDataSource
 
@@ -128,10 +129,10 @@ extension ListViewController: UITableViewDataSource {
 		let dateString: String = formatter.string(from: date)
 		// FIXME: - Get category's name
 		// Get category string value from the task
-		let categoryString = self.taskArray[indexPath.row].category
+		let categoryString = self.taskArray[indexPath.row].category?.name
 
 		// Set date & category into cell's datail label
-		cell.detailTextLabel?.text = "\(dateString)・\(categoryString)"
+		cell.detailTextLabel?.text = "\(dateString)・\(categoryString!)"
 
 		// Return configured cell
 		return cell

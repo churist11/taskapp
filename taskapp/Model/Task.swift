@@ -20,7 +20,6 @@ class Task: Object {
 	// Contents
 	@objc dynamic var contents: String = ""
 
-
 	// Date
 	@objc dynamic var date: Date = Date()
 
