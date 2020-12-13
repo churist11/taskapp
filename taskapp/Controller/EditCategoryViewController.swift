@@ -14,6 +14,7 @@ class EditCategoryViewController: UIViewController {
 
 	// MARK: - IBOutlet
 
+	@IBOutlet weak var alertLabel: UILabel!
 
 	@IBOutlet weak var nameTextField: UITextField!
 
@@ -34,7 +35,11 @@ class EditCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//		print(self.task!)
+		// Assign self as delegate
+		self.nameTextField.delegate = self
+
+		// Hide label
+		self.alertLabel.isHidden = true
 
     }
 
@@ -43,6 +48,16 @@ class EditCategoryViewController: UIViewController {
 
 
 	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
+
+		// Check text field has text
+		if self.nameTextField.text
+			== "" {
+
+			// Show label
+			self.alertLabel.isHidden = false
+
+				return
+		}
 
 		// Create blank category
 		let newCategory = Category()
@@ -66,3 +81,26 @@ class EditCategoryViewController: UIViewController {
 
 
 }// Endline
+
+
+// MARK: - UITextFieldDelegate Method
+
+
+extension EditCategoryViewController: UITextFieldDelegate {
+
+	// Activate return button
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+		// Close keyboard
+		textField.endEditing(true)
+		return true
+	}
+
+	// Detect start editing
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+
+		// Re-hide label
+		self.alertLabel.isHidden = true
+	}
+
+}

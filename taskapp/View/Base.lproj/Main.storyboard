@@ -229,12 +229,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please input name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-Fu-fO9">
+                                <rect key="frame" x="132" y="380" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XP4-zb-c8u" firstAttribute="top" secondItem="gz1-Fu-fO9" secondAttribute="bottom" constant="30" id="3O7-GR-Ze5"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="centerX" secondItem="ZoJ-4T-0c4" secondAttribute="centerX" id="TaO-AD-W4d"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="centerY" secondItem="ZoJ-4T-0c4" secondAttribute="centerY" id="dHb-q0-2nX"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="width" secondItem="ZoJ-4T-0c4" secondAttribute="width" multiplier="0.7" id="jgV-wI-102"/>
+                            <constraint firstItem="gz1-Fu-fO9" firstAttribute="centerX" secondItem="ZoJ-4T-0c4" secondAttribute="centerX" id="lHU-Pp-w3n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EaU-1H-YvG"/>
                     </view>
@@ -246,6 +254,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="alertLabel" destination="gz1-Fu-fO9" id="KY8-aF-kFU"/>
                         <outlet property="nameTextField" destination="XP4-zb-c8u" id="qjU-Xi-3Rf"/>
                     </connections>
                 </viewController>
