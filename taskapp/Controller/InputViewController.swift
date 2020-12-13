@@ -40,8 +40,9 @@ final class InputViewController: UIViewController {
 
 		// Assgin self to text field's delegate
 		self.titleTextField.delegate = self
-		// FIXME: - date picker delegate
-//		self.categoryTextField.delegate = self
+		// Assgin self to picker view's datasource, delegate
+		self.categoryNamePicker.dataSource = self
+		self.categoryNamePicker.delegate = self
 
 		// Add tap gesture into view
 		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -51,7 +52,7 @@ final class InputViewController: UIViewController {
 		self.titleTextField.text = self.task.title
 		self.contentsTextView.text = self.task.contents
 		// FIXME: - Set category's name
-//		self.categoryTextField.text = self.task.category?.name
+		//		self.categoryTextField.text = self.task.category?.name
 		self.datePicker.date = self.task.date
 	}
 
@@ -81,8 +82,25 @@ final class InputViewController: UIViewController {
 
 	// MARK: - Navigation
 
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+		// Confirm segue id
+		guard segue.identifier == C.SEGUE_ID_ADD_CATEGORY else {
+			return
+		}
+
+		// Get reference to EditCategory VC
+		if let editCategoryVC = segue.destination as? EditCategoryViewController {
+
+			// Send the task editing now
+			editCategoryVC.task = self.task
+		}
+	}
+
 
 	@IBAction func unwind(_ segue: UIStoryboardSegue) {
+
+//		print("Back")
 	}
 
 
@@ -153,5 +171,21 @@ extension InputViewController: UITextFieldDelegate {
 		textField.endEditing(true)
 		return true
 	}
+
+}
+
+extension InputViewController: UIPickerViewDataSource {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return 5
+	}
+
+
+}
+
+extension InputViewController: UIPickerViewDelegate {
 
 }

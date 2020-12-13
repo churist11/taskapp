@@ -12,4 +12,6 @@ struct C {
 	internal static let CELL_ID: String = "Cell"
 
 	internal static let SEGUE_ID_FROM_CELL = "cellSegue"
+
+	internal static let SEGUE_ID_ADD_CATEGORY = "addCategory"
 }

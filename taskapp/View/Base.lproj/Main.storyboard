@@ -165,7 +165,7 @@
                                 </constraints>
                                 <state key="normal" title="+ category"/>
                                 <connections>
-                                    <segue destination="tcM-7g-fbY" kind="show" id="y04-jg-tKp"/>
+                                    <segue destination="tcM-7g-fbY" kind="show" identifier="addCategory" id="y04-jg-tKp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,6 +235,7 @@
                     <navigationItem key="navigationItem" id="ZxI-9c-umb">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="O5B-UT-aii">
                             <connections>
+                                <action selector="saveTapped:" destination="tcM-7g-fbY" id="C6L-nq-pa6"/>
                                 <segue destination="HMe-x0-jmq" kind="unwind" unwindAction="unwind:" id="fVI-Nb-uPU"/>
                             </connections>
                         </barButtonItem>
