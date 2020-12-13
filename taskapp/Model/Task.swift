@@ -6,9 +6,13 @@
 //  Copyright © 2020 shoutarou.sakurai. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 class Task: Object {
+
+	// Relationship to one Category
+	@objc dynamic var category: Category?
 
 	// ID for management
 	@objc dynamic var id: Int = 0
@@ -19,8 +23,6 @@ class Task: Object {
 	// Contents
 	@objc dynamic var contents: String = ""
 
-	// Category
-	@objc dynamic var category: String = ""
 
 	// Date
 	@objc dynamic var date: Date = Date()

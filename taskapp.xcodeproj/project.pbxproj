@@ -18,6 +18,7 @@
 		2FE90E5F257FA22D00CC3679 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E5E257FA22D00CC3679 /* Constant.swift */; };
 		2FE90E61257FB34400CC3679 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E60257FB34400CC3679 /* InputViewController.swift */; };
 		2FE90E63258113C500CC3679 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E62258113C500CC3679 /* Task.swift */; };
+		2FE90E652585B21C00CC3679 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE90E642585B21C00CC3679 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		2FE90E5E257FA22D00CC3679 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2FE90E60257FB34400CC3679 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		2FE90E62258113C500CC3679 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		2FE90E642585B21C00CC3679 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		45E2855ADA2775617B59EB26 /* Pods-taskapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.release.xcconfig"; path = "Target Support Files/Pods-taskapp/Pods-taskapp.release.xcconfig"; sourceTree = "<group>"; };
 		590281A49D8AD12AFBCC2046 /* Pods-taskapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.debug.xcconfig"; path = "Target Support Files/Pods-taskapp/Pods-taskapp.debug.xcconfig"; sourceTree = "<group>"; };
 		5B936CB949E261B0A5BAEEB6 /* Pods_taskapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_taskapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE90E62258113C500CC3679 /* Task.swift */,
+				2FE90E642585B21C00CC3679 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				2FE90E5D257F998400CC3679 /* ListViewController.swift in Sources */,
 				2FE90E63258113C500CC3679 /* Task.swift in Sources */,
 				2FE90E43257F861000CC3679 /* SceneDelegate.swift in Sources */,
+				2FE90E652585B21C00CC3679 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
