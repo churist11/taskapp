@@ -18,7 +18,8 @@ final class ListViewController: UIViewController {
 
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var tableView: UITableView!
-
+	@IBOutlet weak var categoryNamePicker: UIPickerView!
+	
 
 	// MARK: - Stored Property
 
@@ -124,7 +125,7 @@ extension ListViewController: UITableViewDataSource {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd HH:mm"
 		let dateString: String = formatter.string(from: date)
-
+		// FIXME: - Get category's name
 		// Get category string value from the task
 		let categoryString = self.taskArray[indexPath.row].category
 
@@ -215,7 +216,7 @@ extension ListViewController: UISearchBarDelegate {
 
 			// 1. Get reference to all Task object in Realm
 			let allTask = self.realm.objects(Task.self).sorted(byKeyPath: "date", ascending: true)
-
+			// FIXME: - 
 			// 2. Get result of filtering category with input text
 			let result = allTask.filter("category CONTAINS %@", searchBar.text!)
 

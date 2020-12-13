@@ -18,8 +18,7 @@ final class InputViewController: UIViewController {
 
 	@IBOutlet weak var titleTextField: UITextField!
 	@IBOutlet weak var contentsTextView: UITextView!
-	@IBOutlet weak var categoryTextField: UITextField!
-
+	@IBOutlet weak var categoryNamePicker: UIPickerView!
 	@IBOutlet weak var datePicker: UIDatePicker!
 
 
@@ -41,7 +40,8 @@ final class InputViewController: UIViewController {
 
 		// Assgin self to text field's delegate
 		self.titleTextField.delegate = self
-		self.categoryTextField.delegate = self
+		// FIXME: - date picker delegate
+//		self.categoryTextField.delegate = self
 
 		// Add tap gesture into view
 		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -50,7 +50,8 @@ final class InputViewController: UIViewController {
 		// Reflect task's properties into UI compornents
 		self.titleTextField.text = self.task.title
 		self.contentsTextView.text = self.task.contents
-		self.categoryTextField.text = self.task.category
+		// FIXME: - Set category's name
+//		self.categoryTextField.text = self.task.category?.name
 		self.datePicker.date = self.task.date
 	}
 
@@ -64,7 +65,8 @@ final class InputViewController: UIViewController {
 			// Configure task object
 			self.task.title = self.titleTextField.text!
 			self.task.contents = self.contentsTextView.text
-			self.task.category = self.categoryTextField.text!
+			// FIXME: - Get text picker current presents
+//			self.task.category?.name = self.categoryTextField.text!
 			self.task.date = self.datePicker.date
 
 			// Save task in realm
@@ -74,6 +76,13 @@ final class InputViewController: UIViewController {
 		// Resister custom notification into Realm
 		self.resistNotification(with: self.task)
 
+	}
+
+
+	// MARK: - Navigation
+
+
+	@IBAction func unwind(_ segue: UIStoryboardSegue) {
 	}
 
 
@@ -95,7 +104,8 @@ final class InputViewController: UIViewController {
 		// Configure content: title, body, sound
 		unContent.title = (self.task.title == "") ? "(No Title)" : self.task.title
 		unContent.body = (self.task.contents ==  "") ? "(No Content)" : self.task.contents
-		unContent.subtitle = (self.task.category == "") ? "(No category)" : "category: \(self.task.category)"
+		// FIXME: - Set subtitle from category name
+//		unContent.subtitle = (self.task.category?.name == "") ? "(No category)" : "category: \(String(describing: self.task.category?.name))"
 
 		unContent.sound = UNNotificationSound.default
 
