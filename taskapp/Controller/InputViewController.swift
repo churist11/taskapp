@@ -28,10 +28,14 @@ final class InputViewController: UIViewController {
 	// Get instance value from Realm
 	private let realm = try! Realm()
 
+	private var categoryList: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
+
 	// Guaranteed tobe assigned value
 	internal var task: Task!
 
-	private var categoryList: Results<Category> = try! Realm().objects(Category.self).sorted(byKeyPath: "id", ascending: true)
+	// Checker for where segur from
+	private var isUnwind: Bool = false
+
 
 
 	// MARK: - LifeCycle
@@ -60,18 +64,33 @@ final class InputViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
+		// Reflect updated data in picker view
+		self.categoryNamePicker.reloadComponent(0)
+
 		// Execute when the task already have category
-		if let category = self.task.category {
+		guard let category = self.task.category else { return }
 
-			// Reflect updated data in picker view
-			self.categoryNamePicker.reloadComponent(0)
+		// <<Index is classified according to which segue came from>>
+		var index: Int
 
-			// Get index of selected category
-			let index = category.id
+		if self.isUnwind {
 
-			// Auto select row corresponding to the task's category
-			self.categoryNamePicker.selectRow(index, inComponent: 0, animated: false)
+			// <From EditVC>
+			// Get last index number of updated category allay
+			index = self.categoryList.endIndex - 1
+
+			self.isUnwind = false
+		} else {
+
+			// <From ListVC>
+			// Get index of selected task's category
+			index = self.categoryList.index(of: category)!
+
 		}
+
+		// Auto select row corresponding to the task's category
+		self.categoryNamePicker.selectRow(index, inComponent: 0, animated: true)
+
 	}
 
 
@@ -181,7 +200,11 @@ final class InputViewController: UIViewController {
 			}
 		}
 	}
-	
+
+	@IBAction func unwind(_ unwindSegue: UIStoryboardSegue) {
+
+		self.isUnwind = true
+	}
 
 }// MARK: - Endline
 

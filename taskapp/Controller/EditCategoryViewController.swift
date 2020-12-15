@@ -32,8 +32,8 @@ final class EditCategoryViewController: UIViewController {
 	// MARK: - LifeCycle
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
 		// Assign self as delegate
 		self.nameTextField.delegate = self
@@ -41,13 +41,18 @@ final class EditCategoryViewController: UIViewController {
 		// Hide label
 		self.alertLabel.isHidden = true
 
-    }
+//		// Hide back button
+//		self.navigationItem.hidesBackButton = true
+
+		// Disable button
+		self.navigationItem.rightBarButtonItem?.isEnabled = false
+
+	}
 
 	
 	// MARK: - IBAction
 
-
-	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
+	@IBAction func saveTapped(_ sender: UIButton) {
 
 		// Check text field has text
 		if self.nameTextField.text
@@ -56,7 +61,7 @@ final class EditCategoryViewController: UIViewController {
 			// Show label
 			self.alertLabel.isHidden = false
 
-				return
+			return
 		}
 
 		// <Confugure new category>
@@ -87,8 +92,14 @@ final class EditCategoryViewController: UIViewController {
 			self.realm.add(newCategory)
 		}
 
-		// Back to InputVC
-		self.navigationController?.popViewController(animated: true)
+		// Show label
+		self.alertLabel.isHidden = false
+		self.alertLabel.text = "save complete!!"
+		self.alertLabel.textColor = .systemGreen
+
+		// Enable Done button
+		self.navigationItem.rightBarButtonItem?.isEnabled = true
+
 	}
 
 

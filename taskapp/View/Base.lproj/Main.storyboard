@@ -241,10 +241,23 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLz-QD-4Ml">
+                                <rect key="frame" x="157" y="527" width="100" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="FiG-LT-4vF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="tcM-7g-fbY" eventType="touchUpInside" id="BOP-Ux-hiE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="top" secondItem="gz1-Fu-fO9" secondAttribute="bottom" constant="30" id="3O7-GR-Ze5"/>
+                            <constraint firstItem="TLz-QD-4Ml" firstAttribute="top" secondItem="XP4-zb-c8u" secondAttribute="bottom" constant="62" id="7Bs-oL-QVi"/>
+                            <constraint firstItem="TLz-QD-4Ml" firstAttribute="centerX" secondItem="ZoJ-4T-0c4" secondAttribute="centerX" id="HNX-9S-QcC"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="centerX" secondItem="ZoJ-4T-0c4" secondAttribute="centerX" id="TaO-AD-W4d"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="centerY" secondItem="ZoJ-4T-0c4" secondAttribute="centerY" id="dHb-q0-2nX"/>
                             <constraint firstItem="XP4-zb-c8u" firstAttribute="width" secondItem="ZoJ-4T-0c4" secondAttribute="width" multiplier="0.7" id="jgV-wI-102"/>
@@ -253,11 +266,7 @@
                         <viewLayoutGuide key="safeArea" id="EaU-1H-YvG"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZxI-9c-umb">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="O5B-UT-aii">
-                            <connections>
-                                <action selector="saveTapped:" destination="tcM-7g-fbY" id="C6L-nq-pa6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="O5B-UT-aii"/>
                     </navigationItem>
                     <connections>
                         <outlet property="alertLabel" destination="gz1-Fu-fO9" id="KY8-aF-kFU"/>
