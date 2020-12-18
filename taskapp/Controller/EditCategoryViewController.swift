@@ -100,6 +100,14 @@ final class EditCategoryViewController: UIViewController {
 		// Enable Done button
 		self.navigationItem.rightBarButtonItem?.isEnabled = true
 
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+
+			// Back to foremer VC
+			self.navigationController?.popViewController(animated: true)
+		}
+
+
+
 	}
 
 

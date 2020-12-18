@@ -265,9 +265,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EaU-1H-YvG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZxI-9c-umb">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="O5B-UT-aii"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ZxI-9c-umb"/>
                     <connections>
                         <outlet property="alertLabel" destination="gz1-Fu-fO9" id="KY8-aF-kFU"/>
                         <outlet property="nameTextField" destination="XP4-zb-c8u" id="qjU-Xi-3Rf"/>
